@@ -1,6 +1,12 @@
 import React from "react"
-import Login from "./components/Login";
-import LoginPage from "./components/pages/LoginPage";
+import Homepage from "./pages/Homepage";
+import LoginPage from "./pages/LoginPage";
+import Navbar from "./components/Navbar";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
 
 function App() {
@@ -8,9 +14,19 @@ function App() {
 
 
   return (
-      <App />,
-          <Login />,
-          <LoginPage />
+      <Router>
+
+          <Navbar/>
+      <Switch>
+          <Route exact path="/">
+            <Homepage/>
+              </Route>
+              <Route path="/Login">
+            <LoginPage/>
+          </Route>
+      </Switch>
+
+      </Router>
 
   );
 }
