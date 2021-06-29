@@ -28,7 +28,7 @@ const Login = () => {
                             <Input type="Password" placeholder="Password" variant="filled" mb="6px" value={password} onChange={(e) => setPassword(e.target.value)}/>
                             <Button onClick={handleOnClick}  textAlign="center" colorScheme="teal" height="2.5rem" rounded="1vh" mr="4px">Log In</Button>
                         <Button textAlign="center" colorScheme="teal" height="2.5rem" rounded="1vh" onClick="ResetPassword" type="reset" mr="4px">reset</Button>
-                        <p>{errorMessage}</p>
+                        <span>{errorMessage}</span>
                     </form>
                 </Heading>
             </Flex>

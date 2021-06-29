@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import {
     Box,
     Stack,
@@ -6,19 +6,11 @@ import {
     Flex,
     Button, useColorMode
 } from "@chakra-ui/react";
-import { HamburgerIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
+import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import {Link} from "react-router-dom";
 
 
 const Navbar = () => {
-    const { isOpen, setIsOpen} = useState(false);
-
-
-    const handleToggle = () => {
-        (isOpen ? setIsOpen(true): setIsOpen(false));
-    }
-
-
     const {colorMode, toggleColorMode} = useColorMode('');
 
 
@@ -40,13 +32,12 @@ const Navbar = () => {
                 </Heading>
             </Flex>
 
-            <Box  display={{ base: "block", md: "none" }} onClick={handleToggle}>
-                <HamburgerIcon />
+            <Box  display={{ base: "block", md: "none" }}>
             </Box>
 
             <Stack
                 direction={{ base: "column", md: "row" }}
-                display={{ base: isOpen ? "block" : "none", md: "flex" }}
+                display={{ base:"block", md: "flex" }}
                 width={{ base: "full", md: "auto" }}
                 alignItems="center"
                 flexGrow={1}
@@ -55,7 +46,7 @@ const Navbar = () => {
             </Stack>
 
             <Box
-                display={{ base: isOpen ? "block" : "none", md: "block" }}
+                display={{ base:"block" ,md: "block" }}
                 mt={{ base: 4, md: 0 }}
             >
                 <Button
@@ -97,4 +88,4 @@ const Navbar = () => {
     );
 };
 
-export default Navbar;
+export default Navbar
