@@ -12,8 +12,9 @@ export const EmailValidation = (email) => {
     export const PasswordValidation = (password) => {
 
     let isValid = false;
-    if(password.length > 4 && password.include("$") ){
+    if(!password.length > 4 && password.include('$')) {
         isValid = true
     }
+
     return isValid
 }

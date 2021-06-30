@@ -11,8 +11,6 @@ const Homepage = () => {
                     <h1>5</h1>
                 </GridItem>
             </Grid>
-
-
         </Container>
     )
 }
