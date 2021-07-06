@@ -6,22 +6,27 @@ import {
   Input,
   Stack,
   Text,
+  ButtonGroup,
 } from "@chakra-ui/react";
 import {
   EmailValidation,
   PasswordValidation,
 } from "../Utilities/LoginValidation";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { ProfileContext } from "../context/ProfileContext";
 
 const Login = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [email, setEmail] = useState([]);
   const [password, setPassword] = useState([]);
 
+  const { setIsLoggedIn} = useContext(ProfileContext)
+
   const handleOnClick = () => {
     setErrorMessage("");
     if (EmailValidation(email) && PasswordValidation(password)) {
-    //   console.log(window.location.pathname)
+      //   console.log(window.location.pathname)
+      setIsLoggedIn(true);
       window.location.pathname = "/";
     } else {
       setErrorMessage("Wrong Email or Password");
@@ -55,7 +60,6 @@ const Login = () => {
               maxW="100%"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-            
             />
           </FormControl>
           <FormControl id="Password">
@@ -69,27 +73,20 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </FormControl>
-          <Button
-            onClick={handleOnClick}
+          <ButtonGroup
             textAlign="center"
             colorScheme="teal"
-            height="2.5rem"
+            height="2rem"
             rounded="1vh"
-            mr="4px"
+            spacing="6"
           >
-            Log In
-          </Button>
-          <Button
-            textAlign="center"
-            colorScheme="teal"
-            height="2.5rem"
-            rounded="1vh"
-            onClick={() => setPassword("")}
-            type="reset"
-            mr="4px"
-          >
-            reset
-          </Button>
+            <Button size="md" onClick={handleOnClick}>
+              Log In
+            </Button>
+            <Button size="md" onClick={() => setPassword("")} type="reset">
+              reset
+            </Button>
+          </ButtonGroup>
           <Text>{errorMessage}</Text>
         </Stack>
       </Flex>

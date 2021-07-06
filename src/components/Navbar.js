@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Box,
   Stack,
@@ -9,9 +9,16 @@ import {
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
+import { ProfileContext } from "../context/ProfileContext";
 
 const Navbar = () => {
   const { colorMode, toggleColorMode } = useColorMode("");
+  const { isLoggedIn } = useContext(ProfileContext);
+
+  // const statusSwitch = () => {
+  //   let isLoggedIn = false;
+
+  // }
 
   return (
     <Flex
@@ -61,8 +68,13 @@ const Navbar = () => {
         <Button
           variant="outline"
           _hover={{ bg: "teal.700", borderColor: "teal.700" }}
-        >
-          <Link to="/Login">Login</Link>
+          // onChange
+          >
+          {isLoggedIn ? 
+            <Link to="/">Logout</Link>
+           : 
+            <Link to="/Login">Login</Link>
+}
         </Button>
 
         <Button
