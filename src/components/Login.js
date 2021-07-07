@@ -13,7 +13,7 @@ import {
   PasswordValidation,
 } from "../Utilities/LoginValidation";
 import { useState, useContext } from "react";
-import { ProfileContext } from "../context/ProfileContext";
+import { ProfileContext } from "../context/useContext";
 
 const Login = () => {
   const [errorMessage, setErrorMessage] = useState("");
@@ -26,7 +26,7 @@ const Login = () => {
     setErrorMessage("");
     if (EmailValidation(email) && PasswordValidation(password)) {
       //   console.log(window.location.pathname)
-      setIsLoggedIn(true);
+      setIsLoggedIn((prev) => !prev)
       window.location.pathname = "/";
     } else {
       setErrorMessage("Wrong Email or Password");

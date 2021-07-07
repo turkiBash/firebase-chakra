@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ProfileContext } from "./context/ProfileContext";
+import { ProfileContext } from "./context/useContext";
 import Homepage from "./pages/Homepage";
 import LoginPage from "./pages/LoginPage";
 import Navbar from "./components/Navbar";

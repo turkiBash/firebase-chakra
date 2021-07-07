@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState } from "react";
 import {
   Box,
   Stack,
@@ -6,19 +6,16 @@ import {
   Flex,
   Button,
   useColorMode,
+  Image
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
-import { ProfileContext } from "../context/ProfileContext";
+import logo from "../Pictures/turki.png"
+
 
 const Navbar = () => {
-  const { colorMode, toggleColorMode } = useColorMode("");
-  const { isLoggedIn } = useContext(ProfileContext);
-
-  // const statusSwitch = () => {
-  //   let isLoggedIn = false;
-
-  // }
+    const { colorMode, toggleColorMode } = useColorMode("");
+    const [isLoggedIn, setIsLoggedIn ] = useState(false);
 
   return (
     <Flex
@@ -31,7 +28,7 @@ const Navbar = () => {
       color="white"
     >
       <Flex align="center" mr={5}>
-        <Heading as="h1" size="lg" letterSpacing={"tighter"}>
+        <Heading as="h1" size="lg" letterSpacing={"normal"}>
           Yousef Al jehani the Legend
         </Heading>
       </Flex>
@@ -65,16 +62,19 @@ const Navbar = () => {
         >
           Create account
         </Button>
+
         <Button
           variant="outline"
           _hover={{ bg: "teal.700", borderColor: "teal.700" }}
-          // onChange
-          >
-          {isLoggedIn ? 
-            <Link to="/">Logout</Link>
-           : 
-            <Link to="/Login">Login</Link>
-}
+          onClick={setIsLoggedIn}
+        
+        >
+          {!isLoggedIn ? (
+           <Link to="/">Logout</Link> ) : (
+            
+          
+           <Link to="/Login">Login</Link>
+           )}
         </Button>
 
         <Button
@@ -86,6 +86,8 @@ const Navbar = () => {
         >
           {colorMode === "dark" ? <SunIcon /> : <MoonIcon />}
         </Button>
+          {!isLoggedIn ? <Image display="inline-block" boxSize="50px" mr="4px" src={logo} /> : "" }
+            
       </Box>
     </Flex>
   );
