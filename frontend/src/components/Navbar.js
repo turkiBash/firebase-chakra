@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import {
   Box,
   Stack,
@@ -11,11 +11,12 @@ import {
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
 import logo from "../Pictures/turki.png"
+import { ProfileContext } from "../context/useContext";
 
 
 const Navbar = () => {
     const { colorMode, toggleColorMode } = useColorMode("");
-    const [isLoggedIn, setIsLoggedIn ] = useState(false);
+    const {setIsLoggedIn, isLoggedIn} = useContext(ProfileContext)
 
   return (
     <Flex

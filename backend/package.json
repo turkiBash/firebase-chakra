@@ -1,0 +1,17 @@
+{
+  "name": "chakra-backend",
+  "version": "1.0.0",
+  "description": "testing",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Turki",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.13.2",
+    "mongose": "^0.0.2-security"
+  }
+}
